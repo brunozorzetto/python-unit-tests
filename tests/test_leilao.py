@@ -10,13 +10,13 @@ class TestLeiao(TestCase):
 
         :return: void
         """
-        self.bruno = Usuario('Bruno')
+        self.bruno = Usuario('Bruno', 10000.0)
         self.lance_bruno = Lance(self.bruno, 500.0)
         self.leilao = Leilao('Celular')
 
     def test_deve_retornar_o_maior_e_o_menor_valor_de_um_lance_quando_adicionados_em_ordem_crescente(self):
 
-        batman = Usuario('Batman')
+        batman = Usuario('Batman', 10000.0)
         lance_batman = Lance(batman, 2000.0)
 
         self.leilao.propoe(self.lance_bruno)
@@ -31,7 +31,7 @@ class TestLeiao(TestCase):
     def test_nao_deve_permitir_propor_um_lance_em_ordem_decrescente(self):
 
         with self.assertRaises(ValueError):
-            batman = Usuario('Batman')
+            batman = Usuario('Batman', 10000.0)
             lance_batman = Lance(batman, 2000.0)
 
             self.leilao.propoe(lance_batman)
@@ -46,10 +46,10 @@ class TestLeiao(TestCase):
 
     def test_deve_retornar_o_maior_e_o_menor_valor_quando_o_leilao_tiver_tres_lances(self):
 
-        batman = Usuario('Batman')
+        batman = Usuario('Batman', 10000.0)
         lance_batman = Lance(batman, 2000.0)
 
-        spider = Usuario('Spider')
+        spider = Usuario('Spider', 10000.0)
         lance_spider = Lance(spider, 8000.0)
 
         self.leilao.propoe(self.lance_bruno)
@@ -71,7 +71,7 @@ class TestLeiao(TestCase):
 
     def test_deve_permitir_propror_um_lance_caso_o_ultimo_usuario_seja_diferente(self):
 
-        spider = Usuario('Spider')
+        spider = Usuario('Spider', 10000.0)
         lance_spider = Lance(spider, 600.0)
 
         self.leilao.propoe(self.lance_bruno)
